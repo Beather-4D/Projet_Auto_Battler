@@ -510,7 +510,7 @@
 											"top": 309,
 											"width": 236.640625,
 											"height": 13,
-											"text": "+tier: int",
+											"text": "-tier: int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -527,7 +527,7 @@
 											"top": 324,
 											"width": 236.640625,
 											"height": 13,
-											"text": "+battler1: Battler",
+											"text": "-battler1: Battler",
 											"horizontalAlignment": 0
 										},
 										{
@@ -544,7 +544,7 @@
 											"top": 339,
 											"width": 236.640625,
 											"height": 13,
-											"text": "+battler2: Battler",
+											"text": "-battler2: Battler",
 											"horizontalAlignment": 0
 										},
 										{
@@ -561,7 +561,7 @@
 											"top": 354,
 											"width": 236.640625,
 											"height": 13,
-											"text": "+battler3: Battler",
+											"text": "-battler3: Battler",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1821,7 +1821,7 @@
 											"top": 397,
 											"width": 155.71435546875,
 											"height": 13,
-											"text": "+golds: Int",
+											"text": "-golds: Int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1838,7 +1838,7 @@
 											"top": 412,
 											"width": 155.71435546875,
 											"height": 13,
-											"text": "+hp: Int",
+											"text": "-hp: Int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1855,7 +1855,7 @@
 											"top": 427,
 											"width": 155.71435546875,
 											"height": 13,
-											"text": "+hand: List<Battler>",
+											"text": "-hand: List<Battler>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1872,7 +1872,7 @@
 											"top": 442,
 											"width": 155.71435546875,
 											"height": 13,
-											"text": "+shop: Shop",
+											"text": "-shop: Shop",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5164,6 +5164,7 @@
 										"$ref": "AAAAAAGEGcKwwIwvS/M="
 									},
 									"name": "tier",
+									"visibility": "private",
 									"type": "int"
 								},
 								{
@@ -5173,6 +5174,7 @@
 										"$ref": "AAAAAAGEGcKwwIwvS/M="
 									},
 									"name": "battler1",
+									"visibility": "private",
 									"type": {
 										"$ref": "AAAAAAGEGaCgSG6dgnk="
 									}
@@ -5184,6 +5186,7 @@
 										"$ref": "AAAAAAGEGcKwwIwvS/M="
 									},
 									"name": "battler2",
+									"visibility": "private",
 									"type": {
 										"$ref": "AAAAAAGEGaCgSG6dgnk="
 									}
@@ -5195,6 +5198,7 @@
 										"$ref": "AAAAAAGEGcKwwIwvS/M="
 									},
 									"name": "battler3",
+									"visibility": "private",
 									"type": {
 										"$ref": "AAAAAAGEGaCgSG6dgnk="
 									}
@@ -5911,6 +5915,7 @@
 										"$ref": "AAAAAAGEGaB6Bm5yhUM="
 									},
 									"name": "golds",
+									"visibility": "private",
 									"type": "Int"
 								},
 								{
@@ -5920,6 +5925,7 @@
 										"$ref": "AAAAAAGEGaB6Bm5yhUM="
 									},
 									"name": "hp",
+									"visibility": "private",
 									"type": "Int"
 								},
 								{
@@ -5929,6 +5935,7 @@
 										"$ref": "AAAAAAGEGaB6Bm5yhUM="
 									},
 									"name": "hand",
+									"visibility": "private",
 									"type": "List<Battler>"
 								},
 								{
@@ -5938,6 +5945,7 @@
 										"$ref": "AAAAAAGEGaB6Bm5yhUM="
 									},
 									"name": "shop",
+									"visibility": "private",
 									"type": {
 										"$ref": "AAAAAAGEGcKwwIwvS/M="
 									}
