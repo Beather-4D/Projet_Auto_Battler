@@ -5,13 +5,13 @@ public class Battler {
 	private int attack;
 	private int healthPoints;
 	
-	Battler(){
+	public Battler(){
 		this.rank = 0;
 		this.attack = 0;
 		this.healthPoints = 0;
 	}
 	
-	Battler(int rank, int attack, int healthPoints){		
+	public Battler(int rank, int attack, int healthPoints){
 		this.rank = rank;
 		this.attack = attack;
 		this.healthPoints = healthPoints;
