@@ -6,7 +6,7 @@ public class Battleground {
     private LinkedList<Battler> player1Battlers;
     private LinkedList<Battler> player2Battlers;
 
-    Battleground(){
+    public Battleground(){
         player1Battlers = new LinkedList<Battler>();
         player2Battlers = new LinkedList<Battler>();
     }

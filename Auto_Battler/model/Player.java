@@ -1,38 +1,43 @@
 package model;
 
+import java.util.LinkedList;
+
 public class Player {
 	private int golds;
 	private int healthPoints;
-	private list hand;
-	private Shop;
-	}
+	private LinkedList<Battler> hand;
+	private Shop shop;
+    private String name;
 
-Player(){
-	this.golds=0;
-	this.healthPoints=0;
-}
+    public Player(){
+        this.golds=0;
+        this.healthPoints=0;
+        hand = new LinkedList<Battler>();
+        shop = new Shop();
+        name = "";
+    }
 
-Player(int golds, int healthPoints){		
-	this.gold=gold;
-	this.healthPoints = healthPoints;
-}
+    public Player(int golds, int healthPoints, String name){		
+        this.golds=golds;
+        this.healthPoints = healthPoints;
+        hand = new LinkedList<Battler>();
+        shop = new Shop();
+        this.name = name;
+    }
 
-public str name{
-	this.name = name;
-}
+    public int buy(int shopPosition){
+        return 0;
+    }
 
-public int ShopPosition{
-	this.ShopPosition = ShopPosition;
-}
+    public int dismiss(Battler battler){
+        return 0;
+    }
 
-public int dismiss{
-	this.battler = battler;
-}
+    public int refreshShop(){
+        return 0;
+    }
 
-public int refreshShop() {
-	return Shop;
-}
-
-public int freezeShop() {
-	return Shop;
+    public int freezeShop() {
+        return 0;
+    }
 }

@@ -1,16 +1,20 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Deck {
-    private List<Battlers> deckBattlers;
+    private ArrayList<Battlers> deckBattlers;
 
-}
-public void refreshShops()
-{
+    public Deck(){
+        deckBattlers = new ArrayList<Battlers>();
+    }
 
-}
+    public void refreshShops(){
 
-public void getDeckBattlers()
-{
-    //retourne la liste des battlers
-    return this.getDeckBattlers();
+    }
+
+    public ArrayList<Battlers> getDeckBattlers(){
+        //retourne la liste des battlers
+        return this.getDeckBattlers();
+    }
 }

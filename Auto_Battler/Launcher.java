@@ -1,5 +1,3 @@
-package model;
-
 public class Launcher {
     public void Launcher(){
         //TODO
