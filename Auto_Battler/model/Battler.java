@@ -29,16 +29,16 @@ public class Battler {
 		return attack;
 	}
 
-	public void setAttack(int attack) {
-		this.attack = attack;
+	public void changeAttack(int bonus) {
+		this.attack += bonus;
 	}
 
 	public int getHealthPoints() {
 		return healthPoints;
 	}
 
-	public void setHealthPoints(int healthPoints) {
-		this.healthPoints = healthPoints;
+	public void changeHealthPoints(int number) {
+		this.healthPoints += number;
 	}
 	
 }
