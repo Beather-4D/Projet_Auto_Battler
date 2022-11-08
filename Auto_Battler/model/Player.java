@@ -25,6 +25,26 @@ public class Player {
         this.name = name;
     }
 
+    public int getGolds(){
+        return this.golds;
+    }
+
+    public int getHealthPoints(){
+        return this.healthPoints;
+    }
+
+    public LinkedList<Battler> getHand(){
+        return this.hand;
+    }
+
+    public Shop getShop(){
+        return this.shop;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
     public int buy(int shopPosition){
         return 0;
     }
