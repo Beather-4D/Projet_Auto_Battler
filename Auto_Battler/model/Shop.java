@@ -8,7 +8,7 @@ public class Shop {
 
     public Shop(){
         this.tier = 1;
-        shopBattlers = new ArrayList<Battler>();
+        this.shopBattlers = new ArrayList<Battler>();
     }
 
     public void changeBattlers(ArrayList<Battler> battlers){
@@ -16,10 +16,14 @@ public class Shop {
     }
 
     public int getTier(){
-        return tier;
+        return this.tier;
+    }
+
+    public void upgradeTier(){
+        this.tier++;
     }
 
     public ArrayList<Battler> getShopBattlers() {
-        return shopBattlers;
+        return this.shopBattlers;
     }
 }

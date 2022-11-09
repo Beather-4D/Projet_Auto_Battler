@@ -16,7 +16,8 @@ public class Battleground {
     }
 
     public void dealDamage(Player player, int damage){
-
+        //inflige les dégâts de la défaite au joueur perdant
+        player.reduceHealthPoints(damage);
     }
 
     private int calculateDamageAmount(){

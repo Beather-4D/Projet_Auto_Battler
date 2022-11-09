@@ -4,6 +4,7 @@ public class Battler {
 	private int rank;
 	private int attack;
 	private int healthPoints;
+	private Tribes tribe;
 	
 	public Battler(){
 		this.rank = 0;
@@ -11,16 +12,19 @@ public class Battler {
 		this.healthPoints = 0;
 	}
 	
-	public Battler(int rank, int attack, int healthPoints){
+	public Battler(int rank, int attack, int healthPoints, Tribes tribe){
 		this.rank = rank;
 		this.attack = attack;
 		this.healthPoints = healthPoints;
+		this.tribe = tribe;
 	}
 	
+	//retourne le rang du battler
 	public int getRank() {
 		return rank;
 	}
 	
+	//change le rang du battler
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
@@ -29,8 +33,8 @@ public class Battler {
 		return attack;
 	}
 
-	public void changeAttack(int bonus) {
-		this.attack += bonus;
+	public void changeAttack(int number) {
+		this.attack += number;
 	}
 
 	public int getHealthPoints() {
@@ -41,4 +45,7 @@ public class Battler {
 		this.healthPoints += number;
 	}
 	
+	public Tribes getTribe(){
+		return this.tribe;
+	}
 }
