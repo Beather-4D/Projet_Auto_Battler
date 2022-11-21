@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Deck {
     private ArrayList<Battler> deckBattlers;
@@ -17,19 +18,21 @@ public class Deck {
         deckBattlers.add(bilal);
     }
     
-    public void refreshShops(ArrayList<Player> players){        
+    public void refreshShops(ArrayList<Player> players){      
         for(Player p : players){
             ArrayList<Battler> list = new ArrayList<Battler>();
             ArrayList<Integer> nb = new ArrayList<Integer>();
+            Random r = new Random();
             for(int i = 0 ; i < 3 ; i++){
-                int x = (int) Math.random() * deckBattlers.size();
+                int x = r.nextInt(deckBattlers.size());
                 while(nb.contains(x)){
-                    x = (int) Math.random() * deckBattlers.size();
+                    x = r.nextInt(deckBattlers.size());
                 }
                 list.add(deckBattlers.get(x));
                 nb.add(x);
             }
             p.getShop().changeBattlers(list);
+            //faire le retrait des battlers du deck
         }
     }
     

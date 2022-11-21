@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Battleground {
@@ -21,7 +22,17 @@ public class Battleground {
     }
 
     private int calculateDamageAmount(){
-        return 0;
+        LinkedList<Battler> survivors;
+        if(player1Battlers.size()==0){
+            survivors = player2Battlers;
+        } else {
+            survivors = player1Battlers;
+        }
+        int sum = 0;
+        for(Battler b : survivors){
+            sum+=b.getRank();
+        }
+        return sum;
     }
 
     public LinkedList<Battler> getPlayer1Battlers(){

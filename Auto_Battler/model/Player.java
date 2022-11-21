@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Player {
@@ -64,20 +65,30 @@ public class Player {
     public String getName(){
         return this.name;
     }
-
-    public int buy(int shopPosition){
-        return 0;
+    //achète un battler du shop
+    public void buy(int shopPosition){
+        if(this.golds < 3){
+            //gestion d'erreur 
+        }
+        Battler battler = this.shop.getShopBattlers().get(shopPosition);
+        this.hand.add(battler);
+        this.golds-=3;
     }
 
-    public int dismiss(Battler battler){
-        return 0;
+    public void dismiss(Battler battler){
+        if(hand.contains(battler)==false){
+            //gestion d'erreur
+        }
+        this.hand.remove(battler);
+        this.golds++;
     }
 
-    public int refreshShop(){
-        return 0;
+    public void refreshShop(){
+        ArrayList<Battler> list = this.shop.getShopBattlers();
+        //Problème de lien entre game, deck et player
     }
 
-    public int freezeShop() {
-        return 0;
+    public void freezeShop() {
+        
     }
 }
