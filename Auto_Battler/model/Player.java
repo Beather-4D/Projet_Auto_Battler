@@ -84,8 +84,7 @@ public class Player {
     }
 
     public void refreshShop(){
-        ArrayList<Battler> list = this.shop.getShopBattlers();
-        //Problème de lien entre game, deck et player
+        this.hand = Deck.refreshSingleShop(this.shop);
     }
 
     public void freezeShop() {
