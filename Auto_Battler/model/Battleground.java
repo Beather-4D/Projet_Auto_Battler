@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Battleground {
@@ -13,7 +12,7 @@ public class Battleground {
     }
 
     public void startFight(){
-        
+
     }
 
     public void dealDamage(Player player, int damage){
@@ -21,7 +20,7 @@ public class Battleground {
         player.reduceHealthPoints(damage);
     }
 
-    private int calculateDamageAmount(){
+    public int calculateDamageAmount(){
         LinkedList<Battler> survivors;
         if(player1Battlers.size()==0){
             survivors = player2Battlers;

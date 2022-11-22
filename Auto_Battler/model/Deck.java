@@ -63,6 +63,6 @@ public class Deck {
     
     public ArrayList<Battler> getDeckBattlers(){
         //retourne la liste des battlers
-        return this.deckBattlers;
+        return deckBattlers;
     }
 }
