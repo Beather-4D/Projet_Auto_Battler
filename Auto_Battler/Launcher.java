@@ -7,4 +7,13 @@ public class Launcher {
         Game game = new Game(name1, name2);
         game.gameLoop();
     }
+
+    public static void main(String[] args) {
+        if(args[0].equals("IHM")){ //
+
+
+        } else {
+
+        }
+    }
 }
