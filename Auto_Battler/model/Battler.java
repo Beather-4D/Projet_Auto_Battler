@@ -12,7 +12,9 @@ public class Battler {
 		this.healthPoints = 0;
 	}
 	
+
 	public Battler(int rank, int attack, int healthPoints, Tribes tribe){
+
 		this.rank = rank;
 		this.attack = attack;
 		this.healthPoints = healthPoints;
