@@ -30,7 +30,7 @@ public class Launcher {
             input = sc.nextLine();
             while ( !input.equals("1") && !input.equals("2") && !input.equals("3")){
                 System.out.println("Incorrect value, retry :");
-                System.out.print(">");
+                System.out.print("> ");
                 input = sc.nextLine();
             }
 

@@ -7,14 +7,12 @@ public class Battler {
 	private Tribes tribe;
 	
 	public Battler(){
-		this.rank = 0;
-		this.attack = 0;
-		this.healthPoints = 0;
+		this.rank = 1;
+		this.attack = 1;
+		this.healthPoints = 1;
 	}
 	
-
 	public Battler(int rank, int attack, int healthPoints, Tribes tribe){
-
 		this.rank = rank;
 		this.attack = attack;
 		this.healthPoints = healthPoints;

@@ -28,19 +28,19 @@ public class Game {
     }
 
     public void gameLoop(){
-
-
         //ajout des golds
         for(Player p : players){
             p.addGolds(3+nbTurn);
         }
         //refresh des shops
-        deck.refreshShops(players);
+        deck.refreshAllShops(players);
         //affichage des shops
         //choix dans le shop
         //placement sur le battleground
         //bataille
         //retrait des HPs du joueur perdant
+
+        //détection si les hp d'un jouer sont à 0 (fin du jeu)
     }
 
     public int getNbTurn(){

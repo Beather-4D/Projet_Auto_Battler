@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Player {
@@ -84,8 +83,7 @@ public class Player {
     }
 
     public void refreshShop(){
-        ArrayList<Battler> list = this.shop.getShopBattlers();
-        //Problème de lien entre game, deck et player
+        this.hand = Deck.refreshSingleShop(this.shop);
     }
 
     public void freezeShop() {
