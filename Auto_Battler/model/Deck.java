@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Random;
 
 public class Deck {
@@ -16,6 +15,8 @@ public class Deck {
         Battler damien = new Battler(5, 5, 5, Tribes.ORC);
         Battler khassan = new Battler(6, 6, 6, Tribes.DWARF);
         Battler khadim = new Battler(7, 7, 7, Tribes.ORC);
+        Battler rocky = new Battler(10,10,10,Tribes.ORC);
+        Battler santa = new Battler(100,100,100,Tribes.DWARF);
         deckBattlers.add(mael);
         deckBattlers.add(baptiste);
         deckBattlers.add(emilien);
@@ -23,12 +24,16 @@ public class Deck {
         deckBattlers.add(damien);
         deckBattlers.add(khassan);
         deckBattlers.add(khadim);
+        deckBattlers.add(rocky);
+        deckBattlers.add(santa);
     }
     
-    public static LinkedList<Battler> refreshSingleShop(Shop shop){
-        LinkedList<Battler> rep = new LinkedList<Battler>();
-        for(Battler element : shop.getShopBattlers()){
-            deckBattlers.add(element);
+    public static ArrayList<Battler> refreshShop(Shop shop){
+        ArrayList<Battler> rep = new ArrayList<Battler>();
+        if(shop.getShopBattlers().size()>0){
+            for(Battler element : shop.getShopBattlers()){
+                deckBattlers.add(element);
+            }
         }
         Random r = new Random();
         ArrayList<Integer> nb = new ArrayList<Integer>();
@@ -39,11 +44,12 @@ public class Deck {
             }
             rep.add(deckBattlers.get(x));
             nb.add(x);
+            deckBattlers.remove(x);
         }
         return rep;
     }
 
-    public void refreshAllShops(ArrayList<Player> players){      
+    /*public void refreshAllShops(ArrayList<Player> players){      
         for(Player p : players){
             ArrayList<Battler> list = new ArrayList<Battler>();
             ArrayList<Integer> nb = new ArrayList<Integer>();
@@ -59,7 +65,7 @@ public class Deck {
             p.getShop().changeBattlers(list);
             //faire le retrait des battlers du deck
         }
-    }
+    }*/
     
     public ArrayList<Battler> getDeckBattlers(){
         //retourne la liste des battlers

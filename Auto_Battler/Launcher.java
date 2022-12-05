@@ -57,6 +57,7 @@ public class Launcher {
 
         } while (!input.equals("1"));
         startGame(name1, name2);
+        sc.close();
     }
 
     public static void main(String[] args) {

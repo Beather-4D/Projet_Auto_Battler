@@ -9,6 +9,7 @@ public class Shop {
     public Shop(){
         this.tier = 1;
         this.shopBattlers = new ArrayList<Battler>();
+        shopBattlers = Deck.refreshShop(this);
     }
 
     public void changeBattlers(ArrayList<Battler> battlers){

@@ -67,11 +67,15 @@ public class Player {
     //achète un battler du shop
     public void buy(int shopPosition){
         if(this.golds < 3){
-            //gestion d'erreur 
+            //TODO gestion d'erreur 
+        }
+        if(this.hand.size()==6){
+            //TODO gestion d'erreur
         }
         Battler battler = this.shop.getShopBattlers().get(shopPosition);
         this.hand.add(battler);
         this.golds-=3;
+        this.shop.getShopBattlers().remove(battler);
     }
 
     public void dismiss(Battler battler){
@@ -83,7 +87,7 @@ public class Player {
     }
 
     public void refreshShop(){
-        this.hand = Deck.refreshSingleShop(this.shop);
+        this.shop.changeBattlers(Deck.refreshShop(this.shop));
     }
 
     public void freezeShop() {
