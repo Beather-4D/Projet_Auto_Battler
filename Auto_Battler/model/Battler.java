@@ -1,24 +1,32 @@
 package model;
 
 public class Battler {
+	private String name;
 	private int rank;
 	private int attack;
 	private int healthPoints;
 	private Tribes tribe;
 	
 	public Battler(){
+		this.name = "Battler";
 		this.rank = 1;
 		this.attack = 1;
 		this.healthPoints = 1;
 	}
 	
-	public Battler(int rank, int attack, int healthPoints, Tribes tribe){
+	public Battler(String name, int rank, int attack, int healthPoints, Tribes tribe){
+		this.name = name;
 		this.rank = rank;
 		this.attack = attack;
 		this.healthPoints = healthPoints;
 		this.tribe = tribe;
 	}
 	
+	//retourne le nom du battler
+	public String getName(){
+		return name;
+	}
+
 	//retourne le rang du battler
 	public int getRank() {
 		return rank;
