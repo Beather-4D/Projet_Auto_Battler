@@ -56,4 +56,9 @@ public class Battler {
 	public Tribes getTribe(){
 		return this.tribe;
 	}
+
+	public String toString(){
+		String rep = this.name + "(" + this.attack + "|" + this.healthPoints + ") " ;
+		return rep;
+	}
 }
