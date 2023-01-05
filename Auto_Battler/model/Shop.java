@@ -35,6 +35,10 @@ public class Shop {
         this.upgradeCost--;
     }
 
+    public void resetUpgradeCost(){
+        this.upgradeCost = 5;
+    }
+
     public ArrayList<Battler> getShopBattlers() {
         return this.shopBattlers;
     }

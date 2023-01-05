@@ -9,16 +9,14 @@ public class Launcher {
     
     public static void Launch(){
         String name1 = "R0B0T";
-        String name2 = "Default";
-        
+        String name2 = "Player";
         Scanner sc = new Scanner(System.in);
         String input;
-        
         System.out.println(" Welcome in Auto Battler Project ");
         do {
             System.out.println("|===============================|");
-            System.out.println("   Name player 1 : " + name1);
-            System.out.println("   Name player 2 : " + name2);
+            System.out.println("   Name AI : " + name1);
+            System.out.println("   Name player : " + name2);
             System.out.println("|===============================|");
             
             

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Player {
@@ -110,6 +111,7 @@ public class Player {
         if(this.golds >= this.shop.getUpgradeCost()){
             this.shop.upgradeTier();
             removeGolds(this.shop.getUpgradeCost());
+            this.shop.resetUpgradeCost();
         } else {
             System.out.println("Vous n'avez pas assez d'argent pour améliorer votre shop !\n");
         }
@@ -117,6 +119,10 @@ public class Player {
     
     public void freezeShop() {
         //TODO
+    }
+
+    public static ArrayList<String> getNames(){
+        ArrayList<String> rep = new ArrayList<>();
     }
 
     public String handToString(){
