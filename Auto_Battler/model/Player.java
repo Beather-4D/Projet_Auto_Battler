@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Player {
@@ -68,10 +67,12 @@ public class Player {
     //achète un battler du shop
     public void buy(int shopPosition){
         if(this.golds < 3){
+            clearConsole();
             System.out.println("Vous n'avez pas assez d'argent pour acheter !\n");
             return;
         }
         if(this.hand.size()==10){
+            clearConsole();
             System.out.println("Vous avez le nombre maximum de cartes (10) !\n");
             return;
         }
@@ -91,6 +92,7 @@ public class Player {
 
     public void sell(int pos){
         if(hand.size() <= pos){
+            clearConsole();
             System.out.println("Erreur dans le choix de la carte à vendre\n");
         }
         Battler b = this.hand.get(pos);
@@ -113,6 +115,7 @@ public class Player {
             removeGolds(this.shop.getUpgradeCost());
             this.shop.resetUpgradeCost();
         } else {
+            clearConsole();
             System.out.println("Vous n'avez pas assez d'argent pour améliorer votre shop !\n");
         }
     }
@@ -121,16 +124,22 @@ public class Player {
         //TODO
     }
 
-    public static ArrayList<String> getNames(){
-        ArrayList<String> rep = new ArrayList<>();
-    }
-
     public String handToString(){
         String rep = "Votre Main : ";
-        for(Battler b : this.hand){
-            rep += b.toString() + " ";
+        if(this.hand.size() > 0){
+            for(Battler b : this.hand){
+                rep += b.toString() + " ";
+            }
+        } else {
+            rep+="vide";
         }
         rep += "\n";
         return rep;
+    }
+
+    //pour clear la console
+    public static void clearConsole(){
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();
     }
 }

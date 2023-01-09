@@ -51,6 +51,10 @@ public class Battler {
 
 	public void changeHealthPoints(int number) {
 		this.healthPoints += number;
+		if(healthPoints<0){
+			healthPoints = 0;
+		}
+		healthPoints = this.healthPoints < 0 ? 0 : healthPoints;
 	}
 	
 	public Tribes getTribe(){
@@ -58,7 +62,7 @@ public class Battler {
 	}
 
 	public String toString(){
-		String rep = this.name + "(" + this.attack + "|" + this.healthPoints + ") " ;
+		String rep = this.name + "(" + this.attack + "|" + this.healthPoints + ")" ;
 		return rep;
 	}
 }
