@@ -57,7 +57,7 @@ public class Game {
                 boolean aRefresh = false;             
                 String cmd = "";
                 while(!cmd.contains("done")){
-                    System.out.println("Que souhaitez-vous faire "+ player.getName() +" ? (help pour l'aide)");
+                    System.out.println("\nQue souhaitez-vous faire "+ player.getName() +" ? (help pour l'aide)");
                     System.out.println("Vous avez " + player.getGolds() + " gold(s)");
                     System.out.println(player.getShop().toString());
                     System.out.println(player.handToString());
@@ -109,7 +109,7 @@ public class Game {
                     field = this.battleground.getPlayer2Battlers();
                     indPlayer = 2;
                 }
-                System.out.println("Place à la bataille "+ player.getName()+ " ! (écrivez done pour terminer)");
+                System.out.println("\nPlace à la bataille "+ player.getName()+ " ! (écrivez done pour terminer)");
                 System.out.println(player.handToString() +"\n");
                 while(field.size() < 4 && player.getHand().size() > 0){
                     System.out.println("Il reste " + (4-field.size()) + " combattant(s) à sélectionner (0-9)");
@@ -228,7 +228,7 @@ public class Game {
     }
 
     public static void clearConsole(){
-        System.out.print("\033[H\033[2J");  
+        //System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
