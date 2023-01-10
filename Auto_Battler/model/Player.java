@@ -8,21 +8,15 @@ public class Player {
     private LinkedList<Battler> hand;
     private Shop shop;
     private String name;
-    
-    public Player(){
-        this.golds=0;
-        this.healthPoints=20;
-        hand = new LinkedList<Battler>();
-        shop = new Shop();
-        name = "Player";
-    }
+    private boolean afreeze;
     
     public Player(String name){		
         this.golds=0;
-        this.healthPoints = 20;
+        this.healthPoints = 3;
         hand = new LinkedList<Battler>();
         shop = new Shop();
         this.name = name;
+        afreeze = false;
     }
     
     //renvoie les golds du joueur
@@ -64,6 +58,12 @@ public class Player {
     public String getName(){
         return this.name;
     }
+
+    //renvoie si le joueur a freeze au dernier tour
+    public boolean afreeze(){
+        return afreeze;
+    }
+
     //achète un battler du shop
     public void buy(int shopPosition){
         if(this.golds < 3){
@@ -81,15 +81,8 @@ public class Player {
         this.golds-=3;
         this.shop.getShopBattlers().remove(battler);
     }
-    
-    /* public void sell(Battler battler){
-        if(hand.contains(battler)==false){
-            //gestion d'erreur
-        }
-        this.hand.remove(battler);
-        this.golds++;
-    } */
 
+    //vend un battler
     public void sell(int pos){
         if(hand.size() <= pos){
             clearConsole();
@@ -109,6 +102,7 @@ public class Player {
         this.shop.changeBattlers(Deck.refreshShop(this.shop, this.shop.getTier()));
     }
     
+    //permet d'augmenter le tier du shop
     public void upgradeShop(){
         if(this.golds >= this.shop.getUpgradeCost()){
             this.shop.upgradeTier();
@@ -120,10 +114,18 @@ public class Player {
         }
     }
     
+    //met l'attribut aFreeze à "true"
     public void freezeShop() {
-        //TODO
+        this.afreeze = true;
+        System.out.println("Votre shop a bien été freeze");
     }
 
+    //met l'attribut aFreeze à "false"
+    public void deFreeze(){
+        this.afreeze = false;
+    }
+
+    //renvoie la chaîne représentant la main du joueur
     public String handToString(){
         String rep = "Votre Main : ";
         if(this.hand.size() > 0){

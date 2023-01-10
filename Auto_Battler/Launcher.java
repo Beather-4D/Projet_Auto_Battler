@@ -12,27 +12,27 @@ public class Launcher {
         String name2 = "Player2";
         Scanner sc = new Scanner(System.in);
         String input;
-        System.out.println(" Welcome in Auto Battler Project ");
+        System.out.println(" Bienvenue dans le Projet Auto Battler ");
         do {
             System.out.println("|===============================|");
-            System.out.println("   Name player1 : " + name1);
-            System.out.println("   Name player2 : " + name2);
+            System.out.println("   Nom joueur 1 : " + name1);
+            System.out.println("   Nom joueur 2 : " + name2);
             System.out.println("|===============================|");
             
             
-            System.out.println("Enter 1 to start the game");
-            System.out.println("Enter 2 to change the player's name");
-            System.out.println("Enter 3 to change the player's name");
+            System.out.println("Entrez 1 pour lancer la partie");
+            System.out.println("Entrez 2 pour changer le nom du joueur 1");
+            System.out.println("Entrez 3 pour changer le nom du joueur 2");
             
             System.out.print("> ");
             input = sc.nextLine();
             while ( !input.equals("1") && !input.equals("2") && !input.equals("3")){
-                System.out.println("Incorrect value, retry :");
+                System.out.println("Valeur incorrecte, réessayez :");
                 System.out.print("> ");
                 input = sc.nextLine();
             }
             if(input.equals("2")){
-                System.out.println("What name for the Player1 ?");
+                System.out.println("Quel nom pour le Joueur 1 ?");
                 System.out.print("> ");
                 name1 = sc.nextLine();
                 if(name1.length() > 10){
@@ -40,7 +40,7 @@ public class Launcher {
                 }                
             }
             if(input.equals("3")){
-                System.out.println("What name for the Player2 ?");
+                System.out.println("Quel nom pour le Joueur 2 ?");
                 System.out.print("> ");
                 name2 = sc.nextLine();
                 if(name2.length() > 10){

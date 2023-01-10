@@ -22,6 +22,7 @@ public class Shop {
         return this.tier;
     }
 
+    //augmente le tier du shop
     public void upgradeTier(){
         this.tier++;
         System.out.println("Votre Shop a été amélioré au tier "+this.tier);
@@ -43,6 +44,7 @@ public class Shop {
         return this.shopBattlers;
     }
 
+    //renvoie la chaîne représentant le shop
     public String toString(){
         String rep = "Votre Shop (tier "+ this.tier +" upgrade "+ this.upgradeCost +"g) : \n";
         for(Battler b : this.shopBattlers){

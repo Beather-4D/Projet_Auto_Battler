@@ -20,6 +20,7 @@ public class Battleground {
         return player2Battlers;
     }
     
+    //ajoute le battler dans le champ de bataille du joueur
     public void addBattler(Battler b, int joueur){
         if(joueur == 1){
             player1Battlers.add(b);
@@ -28,15 +29,7 @@ public class Battleground {
         }
     }
     
-    public void startFight(){
-        
-    }
-    
-    public void dealDamage(Player player, int damage){
-        //inflige les dégâts de la défaite au joueur perdant
-        player.reduceHealthPoints(damage);
-    }
-    
+    //calcule la somme des rang des battler survivants
     public int calculateDamageAmount(){
         LinkedList<Battler> survivors;
         if(player1Battlers.size()==0){
@@ -51,7 +44,8 @@ public class Battleground {
         return sum;
     }
 
-    public String toString(ArrayList<Player> players){
+    //renvoie la chaîne pour afficher le battleground
+    public String toString(ArrayList<Player> players){ 
         String rep = "Sélection de "+ players.get(0).getName() + " : \n";
         if(this.player1Battlers.size() > 0){
             for(Battler b : this.player1Battlers){

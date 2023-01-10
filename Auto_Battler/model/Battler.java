@@ -61,6 +61,7 @@ public class Battler {
 		return this.tribe;
 	}
 
+	//renvoie la chaine nomBattler(attaque | defense)
 	public String toString(){
 		String rep = this.name + "(" + this.attack + "|" + this.healthPoints + ")" ;
 		return rep;

@@ -1,5 +1,5 @@
 package model;
 
 public enum Tribes {
-    DWARF, ORC
+    DWARF, ORC, GOBLIN
 }

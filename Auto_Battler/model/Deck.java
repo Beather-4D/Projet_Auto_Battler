@@ -6,34 +6,91 @@ import java.util.Random;
 public class Deck {
     private static ArrayList<Battler> deckBattlers;
     
+    //constructeur du deck qui créait les battler avec de l'aléatoire dans les nom, attaque et hp
     public Deck(){
-        deckBattlers = new ArrayList<Battler>();
-        Battler bilal = new Battler("Bilal",1, 1, 1, Tribes.ORC);
-        Battler emilien = new Battler("Emilien",1, 2, 2, Tribes.DWARF);
-        Battler baptiste = new Battler("Baptiste",1, 3, 3, Tribes.DWARF);
-        Battler mael = new Battler("Mael",1, 4, 4, Tribes.ORC);
-        Battler damien = new Battler("Damien",1, 5, 5, Tribes.ORC);
-        Battler khassan = new Battler("Khassan",1, 6, 6, Tribes.DWARF);
-        Battler khadim = new Battler("Khadim",1, 7, 7, Tribes.ORC);
-        Battler rocky = new Battler("Rocky",1,10,10,Tribes.ORC);
-        Battler santa = new Battler("Santa",1,100,100,Tribes.DWARF);
-        Battler jul = new Battler("Jul",1,2,3,Tribes.ORC);
-        Battler lucifer = new Battler("lucifer",1,666,666,Tribes.ORC);
-        Battler surcotax = new Battler("surcotax",1,1,1,Tribes.ORC);
-        deckBattlers.add(mael);
-        deckBattlers.add(baptiste);
-        deckBattlers.add(emilien);
-        deckBattlers.add(bilal);
-        deckBattlers.add(damien);
-        deckBattlers.add(khassan);
-        deckBattlers.add(khadim);
-        deckBattlers.add(rocky);
-        deckBattlers.add(santa);
-        deckBattlers.add(jul);
-        deckBattlers.add(lucifer);
-        deckBattlers.add(surcotax);
+        try {
+            deckBattlers = new ArrayList<Battler>();
+            Random rd = new Random(System.currentTimeMillis());
+            int rang = 1;
+            for(int i = 0 ; i < 5 ; i++){
+                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.ORC);
+                rd.setSeed(System.currentTimeMillis()+rd.nextInt());
+                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.DWARF);
+                rd.setSeed(System.currentTimeMillis()+rd.nextInt()); 
+                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.GOBLIN);
+                rd.setSeed(System.currentTimeMillis()+rd.nextInt());
+                deckBattlers.add(a);
+                deckBattlers.add(b);
+                deckBattlers.add(c);
+                Thread.sleep(5);
+            }
+            rang++;
+            for(int i = 0 ; i < 3 ; i++){
+                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.DWARF);
+                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.ORC);
+                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.GOBLIN);
+                deckBattlers.add(a);
+                deckBattlers.add(b);
+                deckBattlers.add(c);
+                Thread.sleep(5);
+            }
+            rang++;
+            for(int i = 0 ; i < 3 ; i++){
+                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.ORC);
+                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.DWARF);
+                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.GOBLIN);
+                deckBattlers.add(a);
+                deckBattlers.add(b);
+                deckBattlers.add(c);
+                Thread.sleep(5);
+            }
+            rang++;
+            for(int i = 0 ; i < 3 ; i++){
+                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.ORC);
+                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(1, rang+3),rd.nextInt(1, rang+3), Tribes.ORC);
+                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.GOBLIN);
+                deckBattlers.add(a);
+                deckBattlers.add(b);
+                deckBattlers.add(c);
+                Thread.sleep(5);
+            }
+            rang++;
+            for(int k = 0 ; k < 3 ; k++){
+                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(1, rang+3),rd.nextInt(1, rang+3), Tribes.DWARF);
+                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(1, rang+3),rd.nextInt(1, rang+3), Tribes.ORC);
+                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.GOBLIN);
+                deckBattlers.add(a);
+                deckBattlers.add(b);
+                deckBattlers.add(c);
+                Thread.sleep(5);
+            }
+            rang++;
+            for(int i = 0 ; i < 3 ; i++){
+                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(1, rang+3),rd.nextInt(1, rang+3), Tribes.ORC);
+                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(1, rang+3),rd.nextInt(1, rang+3), Tribes.ORC);
+                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.GOBLIN);
+                deckBattlers.add(a);
+                deckBattlers.add(b);
+                deckBattlers.add(c);
+                Thread.sleep(5);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     
+    //renvoie une chaîne de caractère aléatoire
+    private String nomRandom(int nb){
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        Random rd = new Random(System.currentTimeMillis());
+        StringBuilder sb = new StringBuilder(nb);
+        for(int i = 0 ; i < nb ; i++){
+            sb.append(alphabet.charAt(rd.nextInt(alphabet.length())));
+        }
+        return sb.toString();
+    }
+    
+    //change les battlers d'un shop
     public static ArrayList<Battler> refreshShop(Shop shop, int tier){
         ArrayList<Battler> rep = new ArrayList<Battler>();
         ArrayList<Battler> base = new ArrayList<Battler>();
@@ -44,14 +101,12 @@ public class Deck {
         }
         for(int i = 0 ; i < deckBattlers.size() ; i++){ //récupération des battlers avec un rank <= au tier du shop du joueur
             Battler b = deckBattlers.get(i);
-            //System.out.println(b.getName() + " est de tier " + b.getRank());
             if(b.getRank()<= tier){
                 base.add(b);
                 deckBattlers.remove(b);
                 i--;
             }
         }
-        //System.out.println("ICI base.size = " + base.size());
         if(base.size()<=3){ //Si il y a 3 battlers ou moins, on les prend direct
             for(Battler element : base){
                 rep.add(element);
@@ -75,30 +130,12 @@ public class Deck {
         }
         return rep;
     }
-
-    /*public void refreshAllShops(ArrayList<Player> players){      
-        for(Player p : players){
-            ArrayList<Battler> list = new ArrayList<Battler>();
-            ArrayList<Integer> nb = new ArrayList<Integer>();
-            Random r = new Random();
-            for(int i = 0 ; i < 3 ; i++){
-                int x = r.nextInt(deckBattlers.size());
-                while(nb.contains(x)){
-                    x = r.nextInt(deckBattlers.size());
-                }
-                list.add(deckBattlers.get(x));
-                nb.add(x);
-            }
-            p.getShop().changeBattlers(list);
-            //faire le retrait des battlers du deck
-        }
-    }*/
-
+    
     //retourne la liste des battlers
     public static ArrayList<Battler> getDeckBattlers(){
         return deckBattlers;
     }
-
+    
     //retire un battler du deck
     public static void removeBattler(Battler battler){
         deckBattlers.remove(battler);

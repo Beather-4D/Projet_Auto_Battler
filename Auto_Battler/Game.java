@@ -45,10 +45,14 @@ public class Game {
             }
             //refresh des shops
             for(Player p : players){
+                if(p.afreeze()){
+                    p.deFreeze();
+                    continue;
+                }
                 ArrayList<Battler> nv = Deck.refreshShop(p.getShop(), p.getShop().getTier());
                 p.getShop().changeBattlers(nv);
             }
-            //choix d'actions (up / buy(0,1,2) / sell (X) / see / refresh / freeze / done / help)
+            //choix d'actions (up / buy(0,1,2) / sell (X) / refresh / freeze / done / help)
             for(Player player : this.players){       
                 boolean aRefresh = false;             
                 String cmd = "";
@@ -59,19 +63,18 @@ public class Game {
                     System.out.println(player.handToString());
                     cmd = sc.nextLine();
                     clearConsole();
-                    if(cmd.contains("help")){ //affiche des commandes
+                    if(cmd.contains("help")){ //affichage des commandes
                         System.out.println("\nhelp donne la liste des commandes\n"+
                         "up permet d'améliorer le tier de votre shop contre " + player.getShop().getUpgradeCost() + " gold(s)\n"+
                         "buy(0/1/2) permet d'acheter le battler 0, 1 ou 2\n"+
                         "sell(x) permet de vendre le battler x\n"+
-                        "see permet de voir le deck et le shop\n"+
                         "refresh permet de rafraîchir le shop (une fois par tour)\n"+
                         "freeze permet de garder le même shop au prochain tour\n" +
                         "done permet de finir votre préparation\n");
                     } else if(cmd.contains("up")){ //upgrade du shop
                         player.upgradeShop();                
                     } else if (cmd.contains("freeze")){
-                        //code pour freeze                
+                        player.freezeShop();               
                     } else if(cmd.contains("refresh")){ //refresh du shop
                         if(aRefresh){
                             System.out.println("Vous avez déjà rafraîchi votre shop !\n");
@@ -79,11 +82,6 @@ public class Game {
                         }
                         player.refreshShop();
                         aRefresh = true;
-                    } else if(cmd.contains("see")){ //affichage shop et main
-                        System.out.println(player.getShop().toString());
-                        System.out.println("\n");
-                        System.out.println(player.handToString());
-                        System.out.println("\n");
                     } else if(cmd.contains("sell")){//vente d'un battler
                         int pos = Character.getNumericValue(cmd.charAt(5));
                         player.sell(pos);
@@ -189,6 +187,7 @@ public class Game {
                 }
                 players.get(0).reduceHealthPoints(this.battleground.calculateDamageAmount());
                 System.out.println(players.get(0).getName() + " a subi " + this.battleground.calculateDamageAmount() + " pt(s) de dégâts !\n");
+                System.out.println(playersHpToString());
                 this.battleground.getPlayer2Battlers().clear();
             } else {
                 for(Battler b : this.battleground.getPlayer1Battlers()){
@@ -196,6 +195,7 @@ public class Game {
                 }
                 players.get(1).reduceHealthPoints(this.battleground.calculateDamageAmount());
                 System.out.println(players.get(1).getName() + " a subi " + this.battleground.calculateDamageAmount() + " pt(s) de dégâts !\n");
+                System.out.println(playersHpToString());
                 this.battleground.getPlayer1Battlers().clear();
             }
             nbTurn++;
@@ -207,7 +207,7 @@ public class Game {
         } else {
             gagnant = players.get(0);
         }
-        System.out.println("FIN DU JEU ! " + gagnant.getName() + " a gagné en + "+ nbTurn + " tours !\n");
+        System.out.println("FIN DU JEU ! " + gagnant.getName() + " a gagné en "+ nbTurn + " tours !\n");
         sc.close();
     }
 
@@ -232,10 +232,12 @@ public class Game {
         System.out.flush();
     }
 
-    /* public  ArrayList<String> getNames(){
-        ArrayList<String> rep = new ArrayList<>();
-        for(Player p : players)
-        rep.add(null)
-    } */
+    public String playersHpToString(){
+        String rep = "";
+        for(Player p : players){
+            rep += p.getName() + " a " + p.getHealthPoints() + " pt(s) de vie \n";
+       }
+       return rep;
+    }
 
 }
