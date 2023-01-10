@@ -53,6 +53,11 @@ public class Game {
                 p.getShop().changeBattlers(nv);
             }
             //choix d'actions (up / buy(0,1,2) / sell (X) / refresh / freeze / done / help)
+
+            /* ICI rélexion à un pb : on voulais faire en sorte que peu importe ce que le user saisit, si les mots 'up, buy, sell, refresh, freeze, done, help' apparaissent (buy0, upp)
+             * la fonction soit appelée.
+             */
+
             for(Player player : this.players){       
                 boolean aRefresh = false;             
                 String cmd = "";
@@ -82,13 +87,54 @@ public class Game {
                         }
                         player.refreshShop();
                         aRefresh = true;
+                    //code de base
                     } else if(cmd.contains("sell")){//vente d'un battler
                         int pos = Character.getNumericValue(cmd.charAt(5));
                         player.sell(pos);
-                    } else if(cmd.contains("buy")){ //achat d'un battler
+                    }
+                    //code modifié
+                     else if(cmd.contains("sell")){ //achat d'un battler
+                        if(cmd.length() != 5 ){
+                            System.out.println("Saisie invalide : La commande sell s'écrit : sell n (n étant un chiffre entre 0 et 9)");
+                            return;
+                        }else {
+                            try{
+                                int pos = Character.getNumericValue(cmd.charAt(4));
+                                if(pos < 0 || pos > 10) {
+                                    System.out.println("Saisie invalide, le chiffre doit être entre 0 et 9");
+                                    return;
+                                }
+                                player.buy(pos);    
+                            }catch(IllegalArgumentException ex){
+                                System.out.println("Saisie invalide : La commande sell s'écrit : sell n (n étant un chiffre entre 0 et 9)");
+                            }
+                        }  
+                    //fin code modifié
+                    //code de base
+                    }  else if(cmd.contains("buy")){ //achat d'un battler                    
                         int pos = Character.getNumericValue(cmd.charAt(4));
-                        player.buy(pos);        
-                    } else if(cmd.contains("done")){
+                        player.buy(pos);                        
+                    }
+                    //code modifié
+                     else if(cmd.contains("buy")){ //achat d'un battler
+                        if(cmd.length() != 5 ){
+                            System.out.println("Saisie invalide : La commande buy s'écrit : buy n (n étant un chiffre entre 0 et 2)");
+                            return;
+                        }else {
+                            try{
+                                int pos = Character.getNumericValue(cmd.charAt(4));
+                                if(pos < 0 || pos > 3) {
+                                    System.out.println("Saisie invalide, le chiffre doit être entre 0 et 2");
+                                    return;
+                                }
+                                player.buy(pos);    
+                            }catch(IllegalArgumentException ex){
+                                System.out.println("Saisie invalide : La commande buy s'écrit : buy n (n étant un chiffre entre 0 et 2)");
+                            }
+                        }  
+                    //fin code modifié                                             
+                    } 
+                     else if(cmd.contains("done")){
                         break;
                     } else {
                         System.out.println("Commande Inconnue !\n"+
@@ -111,7 +157,9 @@ public class Game {
                 }
                 System.out.println("\nPlace à la bataille "+ player.getName()+ " ! (écrivez done pour terminer)");
                 System.out.println(player.handToString() +"\n");
-                while(field.size() < 4 && player.getHand().size() > 0){
+                
+            //code de base
+                 while(field.size() < 4 && player.getHand().size() > 0){
                     System.out.println("Il reste " + (4-field.size()) + " combattant(s) à sélectionner (0-9)");
                     System.out.println(player.handToString() +"\n");
                     System.out.println(this.battleground.toString(this.players) + "\n");
@@ -124,8 +172,34 @@ public class Game {
                     player.getHand().remove(pos);
                     this.battleground.addBattler(choisi, indPlayer);
                     clearConsole();
-                }
-                clearConsole();
+                }                
+            //code modifié
+                while(field.size() < 4 && player.getHand().size() > 0){
+                    System.out.println("Il reste " + (4-field.size()) + " combattant(s) à sélectionner (0-" + (player.getHand().size()-1) + ") ou ecrivez done pour terminer");
+                    System.out.println(player.handToString() +"\n");
+                    System.out.println(this.battleground.toString(this.players) + "\n");
+                    cmd = sc.nextLine();
+                    if(cmd.equals("done")){
+                        break;
+                    }
+                    int pos = -1;
+                    try {
+                        pos = Integer.parseInt(cmd);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Entree Invalide, veuillez saisir un entier valide");
+                        continue;
+                    }
+                    if(pos < 0 || pos >= player.getHand().size()){
+                        System.out.println("Entree Invalide, veuillez saisir un entier entre 0 et " + (player.getHand().size()-1));
+                        continue;
+                    }
+                    Battler choisi = player.getHand().get(pos);
+                    player.getHand().remove(pos);
+                    this.battleground.addBattler(choisi, indPlayer);
+                    clearConsole();
+                    }
+                //fin code modifié
+                clearConsole();                
             }
             clearConsole();
             //bataille
