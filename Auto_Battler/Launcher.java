@@ -18,8 +18,7 @@ public class Launcher {
             System.out.println("   Nom joueur 1 : " + name1);
             System.out.println("   Nom joueur 2 : " + name2);
             System.out.println("|===============================|");
-            
-            
+
             System.out.println("Entrez 1 pour lancer la partie");
             System.out.println("Entrez 2 pour changer le nom du joueur 1");
             System.out.println("Entrez 3 pour changer le nom du joueur 2");
@@ -50,7 +49,6 @@ public class Launcher {
             }
             
         } while (!input.equals("1"));
-        Game.clearConsole();
         startGame(name1, name2);
         sc.close();
     }

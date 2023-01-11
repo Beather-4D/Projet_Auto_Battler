@@ -67,13 +67,11 @@ public class Player {
     //achète un battler du shop
     public void buy(int shopPosition){
         if(this.golds < 3){
-            clearConsole();
-            System.out.println("Vous n'avez pas assez d'argent pour acheter !\n");
+            System.out.println("\nVous n'avez pas assez d'argent pour acheter !\n");
             return;
         }
         if(this.hand.size()==10){
-            clearConsole();
-            System.out.println("Vous avez le nombre maximum de cartes (10) !\n");
+            System.out.println("\nVous avez le nombre maximum de cartes (10) !\n");
             return;
         }
         Battler battler = this.shop.getShopBattlers().get(shopPosition);
@@ -84,9 +82,13 @@ public class Player {
 
     //vend un battler
     public void sell(int pos){
+        if(hand.size() == 0){
+            System.out.println("\nVous n'avez aucun battler dans votre main !\n");
+            return;
+        }
         if(hand.size() <= pos){
-            clearConsole();
-            System.out.println("Erreur dans le choix de la carte à vendre\n");
+            System.out.println("\nErreur dans le choix du battler à vendre");
+            return;
         }
         Battler b = this.hand.get(pos);
         Deck.getDeckBattlers().add(b);
@@ -109,15 +111,14 @@ public class Player {
             removeGolds(this.shop.getUpgradeCost());
             this.shop.resetUpgradeCost();
         } else {
-            clearConsole();
-            System.out.println("Vous n'avez pas assez d'argent pour améliorer votre shop !\n");
+            System.out.println("\nVous n'avez pas assez d'argent pour améliorer votre shop !\n");
         }
     }
     
     //met l'attribut aFreeze à "true"
     public void freezeShop() {
         this.afreeze = true;
-        System.out.println("Votre shop a bien été freeze");
+        System.out.println("\nVotre shop a bien été freeze");
     }
 
     //met l'attribut aFreeze à "false"
@@ -137,11 +138,5 @@ public class Player {
         }
         rep += "\n";
         return rep;
-    }
-
-    //pour clear la console
-    public static void clearConsole(){
-        System.out.print("\033[H\033[2J");  
-        System.out.flush();
     }
 }

@@ -31,11 +31,6 @@ public class Battler {
 	public int getRank() {
 		return rank;
 	}
-	
-	//change le rang du battler
-	public void setRank(int rank) {
-		this.rank = rank;
-	}
 
 	public int getAttack() {
 		return attack;

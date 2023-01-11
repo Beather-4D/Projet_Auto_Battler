@@ -13,13 +13,13 @@ public class Game {
     
     public Game(String name1, String name2){
         this.nbTurn = 1;
-        this.deck = new Deck();        
-        this.battleground = new Battleground();        
+        this.deck = new Deck(); 
+        this.battleground = new Battleground();
         players = new ArrayList<Player>();
         Player player1 = new Player(name1);
         Player player2 = new Player(name2);
         this.players.add(player1);
-        this.players.add(player2);        
+        this.players.add(player2);
     }
     
     public boolean isGameOver(){
@@ -53,13 +53,8 @@ public class Game {
                 p.getShop().changeBattlers(nv);
             }
             //choix d'actions (up / buy(0,1,2) / sell (X) / refresh / freeze / done / help)
-
-            /* ICI rélexion à un pb : on voulais faire en sorte que peu importe ce que le user saisit, si les mots 'up, buy, sell, refresh, freeze, done, help' apparaissent (buy0, upp)
-             * la fonction soit appelée.
-             */
-
-            for(Player player : this.players){       
-                boolean aRefresh = false;             
+            for(Player player : this.players){
+                boolean aRefresh = false;
                 String cmd = "";
                 while(!cmd.contains("done")){
                     System.out.println("\nQue souhaitez-vous faire "+ player.getName() +" ? (help pour l'aide)");
@@ -67,7 +62,6 @@ public class Game {
                     System.out.println(player.getShop().toString());
                     System.out.println(player.handToString());
                     cmd = sc.nextLine();
-                    clearConsole();
                     if(cmd.contains("help")){ //affichage des commandes
                         System.out.println("\nhelp donne la liste des commandes\n"+
                         "up permet d'améliorer le tier de votre shop contre " + player.getShop().getUpgradeCost() + " gold(s)\n"+
@@ -82,66 +76,51 @@ public class Game {
                         player.freezeShop();               
                     } else if(cmd.contains("refresh")){ //refresh du shop
                         if(aRefresh){
-                            System.out.println("Vous avez déjà rafraîchi votre shop !\n");
+                            System.out.println("\nVous avez déjà rafraîchi votre shop !\n");
                             continue;
                         }
                         player.refreshShop();
                         aRefresh = true;
-                    //code de base
-                    } else if(cmd.contains("sell")){//vente d'un battler
-                        int pos = Character.getNumericValue(cmd.charAt(5));
-                        player.sell(pos);
-                    }
-                    //code modifié
-                     else if(cmd.contains("sell")){ //achat d'un battler
-                        if(cmd.length() != 5 ){
-                            System.out.println("Saisie invalide : La commande sell s'écrit : sell n (n étant un chiffre entre 0 et 9)");
-                            return;
-                        }else {
-                            try{
-                                int pos = Character.getNumericValue(cmd.charAt(4));
+                    } else if(cmd.contains("sell")){ //vente d'un battler
+                        if(cmd.length() != 6 ){
+                            System.out.println("\nSaisie invalide : La commande sell s'écrit : sell n (n étant un chiffre entre 0 et 9)");
+                            continue;
+                        } else {
+                            try {
+                                int pos = Character.getNumericValue(cmd.charAt(5));
                                 if(pos < 0 || pos > 10) {
-                                    System.out.println("Saisie invalide, le chiffre doit être entre 0 et 9");
-                                    return;
+                                    System.out.println("\nSaisie invalide, le chiffre doit être entre 0 et 9");
+                                    continue;
                                 }
-                                player.buy(pos);    
-                            }catch(IllegalArgumentException ex){
-                                System.out.println("Saisie invalide : La commande sell s'écrit : sell n (n étant un chiffre entre 0 et 9)");
+                                player.sell(pos);    
+                            } catch(IllegalArgumentException ex){
+                                System.out.println("\nSaisie invalide : La commande sell s'écrit : sell n (n étant un chiffre entre 0 et 9)");
                             }
-                        }  
-                    //fin code modifié
-                    //code de base
-                    }  else if(cmd.contains("buy")){ //achat d'un battler                    
+                        }
+                    } else if(cmd.contains("buy")){ //achat d'un battler
+                if(cmd.length() != 5 ){
+                    System.out.println("\nSaisie invalide : La commande buy s'écrit : buy n (n étant un chiffre entre 0 et 2)");
+                    continue;
+                } else {
+                    try{
                         int pos = Character.getNumericValue(cmd.charAt(4));
-                        player.buy(pos);                        
+                        if(pos < 0 || pos > 3) {
+                            System.out.println("\nSaisie invalide, le chiffre doit être entre 0 et 2");
+                            continue;
+                        }
+                        player.buy(pos);    
+                    }catch(IllegalArgumentException ex){
+                        System.out.println("\nSaisie invalide : La commande buy s'écrit : buy n (n étant un chiffre entre 0 et 2)");
                     }
-                    //code modifié
-                     else if(cmd.contains("buy")){ //achat d'un battler
-                        if(cmd.length() != 5 ){
-                            System.out.println("Saisie invalide : La commande buy s'écrit : buy n (n étant un chiffre entre 0 et 2)");
-                            return;
-                        }else {
-                            try{
-                                int pos = Character.getNumericValue(cmd.charAt(4));
-                                if(pos < 0 || pos > 3) {
-                                    System.out.println("Saisie invalide, le chiffre doit être entre 0 et 2");
-                                    return;
-                                }
-                                player.buy(pos);    
-                            }catch(IllegalArgumentException ex){
-                                System.out.println("Saisie invalide : La commande buy s'écrit : buy n (n étant un chiffre entre 0 et 2)");
-                            }
-                        }  
-                    //fin code modifié                                             
-                    } 
-                     else if(cmd.contains("done")){
+                }                                           
+            } 
+                    else if(cmd.contains("done")){ //commande fin de phase de prép
                         break;
                     } else {
-                        System.out.println("Commande Inconnue !\n"+
+                        System.out.println("\nCommande Inconnue !\n"+
                         "(Utilisez la commande help si besoin !\n");
-                    }
+                    }   
                 }
-                clearConsole();
             }
             //placement sur le battleground
             String cmd = "";
@@ -157,25 +136,8 @@ public class Game {
                 }
                 System.out.println("\nPlace à la bataille "+ player.getName()+ " ! (écrivez done pour terminer)");
                 System.out.println(player.handToString() +"\n");
-                
-            //code de base
-                 while(field.size() < 4 && player.getHand().size() > 0){
-                    System.out.println("Il reste " + (4-field.size()) + " combattant(s) à sélectionner (0-9)");
-                    System.out.println(player.handToString() +"\n");
-                    System.out.println(this.battleground.toString(this.players) + "\n");
-                    cmd = sc.nextLine();
-                    if(cmd.contains("done")){
-                        break;
-                    }
-                    int pos = Integer.parseInt(cmd);
-                    Battler choisi = player.getHand().get(pos);
-                    player.getHand().remove(pos);
-                    this.battleground.addBattler(choisi, indPlayer);
-                    clearConsole();
-                }                
-            //code modifié
                 while(field.size() < 4 && player.getHand().size() > 0){
-                    System.out.println("Il reste " + (4-field.size()) + " combattant(s) à sélectionner (0-" + (player.getHand().size()-1) + ") ou ecrivez done pour terminer");
+                    System.out.println("Il reste " + (4-field.size()) + " combattant(s) à sélectionner (0-" + (player.getHand().size()-1) + ") ou écrivez done pour terminer");
                     System.out.println(player.handToString() +"\n");
                     System.out.println(this.battleground.toString(this.players) + "\n");
                     cmd = sc.nextLine();
@@ -186,22 +148,18 @@ public class Game {
                     try {
                         pos = Integer.parseInt(cmd);
                     } catch (NumberFormatException e) {
-                        System.out.println("Entree Invalide, veuillez saisir un entier valide");
+                        System.out.println("\nEntrée Invalide, veuillez saisir un entier valide");
                         continue;
                     }
                     if(pos < 0 || pos >= player.getHand().size()){
-                        System.out.println("Entree Invalide, veuillez saisir un entier entre 0 et " + (player.getHand().size()-1));
+                        System.out.println("\nEntrée Invalide, veuillez saisir un entier entre 0 et " + (player.getHand().size()-1));
                         continue;
                     }
                     Battler choisi = player.getHand().get(pos);
                     player.getHand().remove(pos);
                     this.battleground.addBattler(choisi, indPlayer);
-                    clearConsole();
-                    }
-                //fin code modifié
-                clearConsole();                
+                }               
             }
-            clearConsole();
             //bataille
             System.out.println("LA BATAILLE COMMENCE !\n");
             System.out.println(this.battleground.toString(players));
@@ -213,8 +171,6 @@ public class Game {
                 System.out.println(players.get(0).getName() + " commence cette bataille\n");
             }
             while(this.battleground.getPlayer1Battlers().size()>0 && this.battleground.getPlayer2Battlers().size()>0){
-                /* int test = rd.nextInt(this.battleground.getPlayer2Battlers().size());
-                System.out.println(test + "\n\n"); */
                 if(auJoueur2){
                     int indAtt = rd.nextInt(this.battleground.getPlayer2Battlers().size());
                     int indDef = rd.nextInt(this.battleground.getPlayer1Battlers().size());
@@ -227,7 +183,7 @@ public class Game {
                     attaquant.changeHealthPoints(-attDef);
                     if(defenseur.getHealthPoints()<= 0){
                         Battler mort = this.battleground.getPlayer1Battlers().remove(indDef);
-                        System.out.println(mort.toString() + " a succombé !\n");
+                        System.out.println(mort.toString() + " a succombé !");
                     }
                     if(attaquant.getHealthPoints()<= 0){
                         Battler mort = this.battleground.getPlayer2Battlers().remove(indAtt);
@@ -245,7 +201,7 @@ public class Game {
                     attaquant.changeHealthPoints(-attDef);                
                     if(defenseur.getHealthPoints()<= 0){
                         Battler mort = this.battleground.getPlayer2Battlers().remove(indDef);
-                        System.out.println(mort.toString() + " a succombé !\n");
+                        System.out.println(mort.toString() + " a succombé !");
                     }
                     if(attaquant.getHealthPoints()<= 0){
                         Battler mort = this.battleground.getPlayer1Battlers().remove(indAtt);
@@ -275,6 +231,7 @@ public class Game {
             nbTurn++;
             System.out.println("~~~~~~\nTOUR " +nbTurn+"\n~~~~~~");
         }
+        //affichage du gagnant
         Player gagnant;
         if(players.get(0).getHealthPoints()<=0){
             gagnant = players.get(1);
@@ -283,35 +240,14 @@ public class Game {
         }
         System.out.println("FIN DU JEU ! " + gagnant.getName() + " a gagné en "+ nbTurn + " tours !\n");
         sc.close();
-    }
+}
 
-    public int getNbTurn(){
-        return nbTurn;
+public String playersHpToString(){
+    String rep = "";
+    for(Player p : players){
+        rep += p.getName() + " a " + p.getHealthPoints() + " pt(s) de vie \n";
     }
-
-    public ArrayList<Player> getPlayers(){
-        return players;
-    }
-
-    public Deck getDeck() {
-        return deck;
-    }
-
-    public Battleground getBattleground() {
-        return battleground;
-    }
-
-    public static void clearConsole(){
-        //System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
-    public String playersHpToString(){
-        String rep = "";
-        for(Player p : players){
-            rep += p.getName() + " a " + p.getHealthPoints() + " pt(s) de vie \n";
-       }
-       return rep;
-    }
+    return rep;
+}
 
 }

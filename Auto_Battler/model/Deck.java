@@ -13,11 +13,11 @@ public class Deck {
             Random rd = new Random(System.currentTimeMillis());
             int rang = 1;
             for(int i = 0 ; i < 5 ; i++){
-                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.ORC);
+                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(rang, rang+3), rd.nextInt(rang, rang+3), Tribes.ORC);
                 rd.setSeed(System.currentTimeMillis()+rd.nextInt());
-                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.DWARF);
+                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(rang, rang+3), rd.nextInt(rang, rang+3), Tribes.DWARF);
                 rd.setSeed(System.currentTimeMillis()+rd.nextInt()); 
-                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.GOBLIN);
+                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(rang, rang+3), rd.nextInt(rang, rang+3), Tribes.GOBLIN);
                 rd.setSeed(System.currentTimeMillis()+rd.nextInt());
                 deckBattlers.add(a);
                 deckBattlers.add(b);
@@ -25,50 +25,50 @@ public class Deck {
                 Thread.sleep(5);
             }
             rang++;
-            for(int i = 0 ; i < 3 ; i++){
-                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.DWARF);
-                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.ORC);
-                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.GOBLIN);
+            for(int i = 0 ; i < 5 ; i++){
+                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(rang, rang+3), rd.nextInt(rang, rang+3), Tribes.DWARF);
+                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(rang, rang+3), rd.nextInt(rang, rang+3), Tribes.ORC);
+                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(rang, rang+3), rd.nextInt(rang, rang+3), Tribes.GOBLIN);
                 deckBattlers.add(a);
                 deckBattlers.add(b);
                 deckBattlers.add(c);
                 Thread.sleep(5);
             }
             rang++;
-            for(int i = 0 ; i < 3 ; i++){
-                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.ORC);
-                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.DWARF);
-                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.GOBLIN);
+            for(int i = 0 ; i < 5 ; i++){
+                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(rang, rang+3), rd.nextInt(rang, rang+3), Tribes.ORC);
+                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(rang, rang+3), rd.nextInt(rang, rang+3), Tribes.DWARF);
+                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(rang, rang+3), rd.nextInt(rang, rang+3), Tribes.GOBLIN);
                 deckBattlers.add(a);
                 deckBattlers.add(b);
                 deckBattlers.add(c);
                 Thread.sleep(5);
             }
             rang++;
-            for(int i = 0 ; i < 3 ; i++){
-                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.ORC);
-                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(1, rang+3),rd.nextInt(1, rang+3), Tribes.ORC);
-                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.GOBLIN);
+            for(int i = 0 ; i < 5 ; i++){
+                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(rang, rang+3), rd.nextInt(rang, rang+3), Tribes.ORC);
+                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(rang, rang+3),rd.nextInt(rang, rang+3), Tribes.ORC);
+                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(rang, rang+3), rd.nextInt(rang, rang+3), Tribes.GOBLIN);
                 deckBattlers.add(a);
                 deckBattlers.add(b);
                 deckBattlers.add(c);
                 Thread.sleep(5);
             }
             rang++;
-            for(int k = 0 ; k < 3 ; k++){
-                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(1, rang+3),rd.nextInt(1, rang+3), Tribes.DWARF);
-                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(1, rang+3),rd.nextInt(1, rang+3), Tribes.ORC);
-                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.GOBLIN);
+            for(int k = 0 ; k < 5 ; k++){
+                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(rang, rang+3),rd.nextInt(rang, rang+3), Tribes.DWARF);
+                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(rang, rang+3),rd.nextInt(rang, rang+3), Tribes.ORC);
+                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(rang, rang+3), rd.nextInt(rang, rang+3), Tribes.GOBLIN);
                 deckBattlers.add(a);
                 deckBattlers.add(b);
                 deckBattlers.add(c);
                 Thread.sleep(5);
             }
             rang++;
-            for(int i = 0 ; i < 3 ; i++){
-                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(1, rang+3),rd.nextInt(1, rang+3), Tribes.ORC);
-                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(1, rang+3),rd.nextInt(1, rang+3), Tribes.ORC);
-                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(1, rang+3), rd.nextInt(1, rang+3), Tribes.GOBLIN);
+            for(int i = 0 ; i < 5 ; i++){
+                Battler a = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(rang, rang+3),rd.nextInt(rang, rang+3), Tribes.ORC);
+                Battler b = new Battler(nomRandom(rd.nextInt(4, 9)), rang,rd.nextInt(rang, rang+3),rd.nextInt(rang, rang+3), Tribes.ORC);
+                Battler c = new Battler(nomRandom(rd.nextInt(4, 9)), rang, rd.nextInt(rang, rang+3), rd.nextInt(rang, rang+3), Tribes.GOBLIN);
                 deckBattlers.add(a);
                 deckBattlers.add(b);
                 deckBattlers.add(c);
@@ -81,11 +81,16 @@ public class Deck {
     
     //renvoie une chaîne de caractère aléatoire
     private String nomRandom(int nb){
-        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        String voyelle = "aeiouy";
+        String consonne = "bcdfghjklmnpqrstvwxz";
         Random rd = new Random(System.currentTimeMillis());
         StringBuilder sb = new StringBuilder(nb);
         for(int i = 0 ; i < nb ; i++){
-            sb.append(alphabet.charAt(rd.nextInt(alphabet.length())));
+            if(i%2==0){
+                sb.append(consonne.charAt(rd.nextInt(consonne.length())));
+            } else {
+                sb.append(voyelle.charAt(rd.nextInt(voyelle.length())));
+            }            
         }
         return sb.toString();
     }
