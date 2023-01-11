@@ -12,7 +12,7 @@ public class Player {
     
     public Player(String name){		
         this.golds=0;
-        this.healthPoints = 3;
+        this.healthPoints = 20;
         hand = new LinkedList<Battler>();
         shop = new Shop();
         this.name = name;
