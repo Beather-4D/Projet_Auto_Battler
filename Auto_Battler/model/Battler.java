@@ -7,24 +7,12 @@ public class Battler {
 	private int healthPoints;
 	private Tribes tribe;
 	
-	public Battler(){
-		this.name = "Battler";
-		this.rank = 1;
-		this.attack = 1;
-		this.healthPoints = 1;
-	}
-	
 	public Battler(String name, int rank, int attack, int healthPoints, Tribes tribe){
 		this.name = name;
 		this.rank = rank;
 		this.attack = attack;
 		this.healthPoints = healthPoints;
 		this.tribe = tribe;
-	}
-	
-	//retourne le nom du battler
-	public String getName(){
-		return name;
 	}
 
 	//retourne le rang du battler
@@ -36,6 +24,7 @@ public class Battler {
 		return attack;
 	}
 
+	//inutile car tribe non implémenté
 	public void changeAttack(int number) {
 		this.attack += number;
 	}
@@ -52,6 +41,7 @@ public class Battler {
 		healthPoints = this.healthPoints < 0 ? 0 : healthPoints;
 	}
 	
+	//inutile car tribe non implémenté
 	public Tribes getTribe(){
 		return this.tribe;
 	}

@@ -1,5 +1,7 @@
 # Projet_Auto_Battler
 
+~ Emilien HEMERY, Bilal ESSAYED MESSOUADI, Baptiste FOSSET et Mael GUILLAS ~
+
 Voici le mode d'emploi de notre projet d'Auto Battler.
 
 Tout d'abord, vous pouvez exécuter notre fichier .jar dans un terminal de commande Windows

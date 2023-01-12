@@ -141,8 +141,4 @@ public class Deck {
         return deckBattlers;
     }
     
-    //retire un battler du deck
-    public static void removeBattler(Battler battler){
-        deckBattlers.remove(battler);
-    }
 }
